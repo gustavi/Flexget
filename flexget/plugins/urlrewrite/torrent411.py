@@ -418,7 +418,7 @@ class UrlRewriteTorrent411(object):
                 raise UrlRewritingError("Connection Error for %s : %s" % (url, e))
             rawdata = response.read()
 
-            match = re.search(r"<a href=\"/torrents/download/\?id=(\d*?)\">.*\.torrent</a>", rawdata)
+            match = re.search(r"<a href=\"/torrents/download/\?id=(\d*?)\">.*\.torrent</a>", str(rawdata))
             if match:
                 torrent_id = match.group(1)
                 log.debug("Got the Torrent ID: %s" % torrent_id)
